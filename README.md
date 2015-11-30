@@ -1,5 +1,5 @@
 # Kaggle Notes
 
-## Primary Tool: GNU Octave
+### Primary Tool: GNU Octave
 
-## Interested Model: Neural Network
+### Interested Model: Neural Network
