@@ -1,0 +1,11 @@
+base date: 	735235(0) ; 2013/1/1(Tue)
+test date: 	736177(942) ~ 736224(989) ; 2015/8/1(Sat) ~ 2015/9/17(Thu)  (48 days)
+aligned date:	735813(578) ~ 735860(625) ; 2014/8/2 ~ 2014/9/18  (48 days)
+
+External data and Other information
+https://www.kaggle.com/c/rossmann-store-sales/forums/t/17229/external-data-and-other-information
+
+
+WTF: store_index: 977, length: 758  
+WTF: store_index: 988, length: 941  
+WTF: store_index: 989, length: 758

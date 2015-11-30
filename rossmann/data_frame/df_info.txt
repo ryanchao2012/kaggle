@@ -1,0 +1,68 @@
+t = 1017209
+n = 1115
+w = 135
+
+
+test_v2[cell](856 x 6):  {Sat, Sun, Mon, Tue, Wed, Thu, Fri}
+  {
+		   [int32]sales(4, 7), 
+		   [logical]isOpen(11, 7), 
+		   [logical]isPromo(11, 7), 
+		   [logical]isSchHday(11, 7), 
+		   [logical]isStateHday(11, 7), 
+		   [double]sale_distr(4, 2)	 
+  }
+
+
+training_set[struct]:
+  [1,1] = X	[double](142918, 46)
+  [2,1] = Y	[double](142918, 9)
+
+
+train_v2[cell](n x 6):  {Tue, Wed, Thu, Fri, Sat, Sun, Mon}
+  {
+   store_index, {
+		   [int32]sales(w, 7), 
+		   [logical]isOpen(w, 7), 
+		   [logical]isPromo(w, 7), 
+		   [logical]isSchHday(w, 7), 
+		   [logical]isStateHday(w, 7), 
+		   [double]sale_distr(w, 2)
+		 }
+  }
+
+test:
+  [1,1] = test_id
+  [2,1] = store_index
+  [3,1] = date_seq
+  [4,1] = day_week
+  [5,1] = bool_feat
+  [6,1] = state_hday
+
+train:
+  [1,1] = store_index
+  [2,1] = date_seq
+  [3,1] = day_week		[int8](t x 1)
+  [4,1] = sale_cust		[int32](t x 2) {sales, customers}
+  [5,1] = bool_feat		[logical](t x 3) {isOpen, isPromo, isSchHday}
+  [6,1] = state_hday		[int8](t x 1) 1:public, 2:Easter, 3:Christmas
+  [7,1] = date_base		[int32](t x 1) 2013/1/1, (735235)
+
+
+store:
+  [1,1] = type_assort		[int8](n x 2) {type, assort}
+  [2,1] = comp_dist		[int16](n x 1)
+  [3,1] = comp_open_since	[int16](n x 2) {month, year}
+  [4,1] = promo2		[int16](n x 3) {hasPromo2, sinceWeek, sinceYear}
+  [5,1] = promo_month		[cell:[int8](1 x 4)](n x 1) 
+
+
+principal:
+  % Record the top 20 sales-period in each store
+  [1,1] = frequency	[cell:[double](1 x 20)](n x 1)
+  [2,1] = energy	[cell:[double](1 x 20)](n x 1)
+
+
+business:
+  [1,1] = business_rate	[double](n x 1)
+  [2,1] = store_age		[int32](n x 1)

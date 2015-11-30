@@ -1,0 +1,5 @@
+sample_submission.csv: 41089 lines 
+test.csv: 41089 lines 
+store.csv: 1116 lines 
+train.csv: 1017210 lines: 
+	Store,DayOfWeek	Date,Sales,Customers,Open,Promo,StateHoliday,SchoolHoliday 
