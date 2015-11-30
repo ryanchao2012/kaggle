@@ -1,0 +1,110 @@
+1. positive pairs 有極高的機率使用的ip有交集
+   negative pairs 有極高的機率使用的ip沒有交集
+
+
+2. positive 與 negative pairs, property交集數量的分佈類似
+
+2. positive 中 device 的 Anonymous_c2 feature 類別與
+   negative 中 device 的 Anonymous_c2 feature 類別 鮮少交集
+
+3. 同2.
+   positive 中 cookie 的 Anonymous_c2 feature 類別與
+   negative 中 cookie 的 Anonymous_c2 feature 類別 鮮少交集
+
+
+4. The MOST:
+   Device  type: <2, 4> -> <iphone, android> or <android, iphone>
+   Country code: 146 -> USA or CHINA
+   Cookie  type: <203, 133> -> <windows, OSX>
+   Browser code: 875 -> Chrome
+
+   Anonymous_7 pair: <204, 204>
+   Anonymous_6 pair: <  1,   1>
+
+
+
+... Randomly select 1001:1000(P:N) positive/negative samples ...
+5        6       6
+39       41      48
+41       46      50
+89       93      120
+20       22      30
+21       31      36
+3        3       3
+3        3       3
+411      400     666
+413      431     697
+657      632     1250
+724      719     1396
+64       61      73
+67       66      79
+100      97      118
+125      126     130
+61       61      61
+61       61      61
+>> dc_basic_test
+
+
+... Randomly select 1001:1000(P:N) positive/negative samples ...
+6        7       7
+39       41      48
+41       41      47
+92       101     121
+20       25      30
+16       31      33
+3        3       3
+3        3       3
+409      389     674
+424      403     687
+630      635     1217
+701      711     1359
+70       64      78
+58       59      64
+93       90      111
+128      126     132
+61       61      61
+60       62      62
+>> dc_basic_test
+
+
+... Randomly select 10001:10000(P:N) positive/negative samples ...
+8        8       8
+71       68      81
+58       66      70
+217      214     270
+69       73      91
+66       59      79
+3        3       3
+3        3       3
+1360     1343    1418
+1353     1355    1419
+5242     5201    8786
+5615     5585    9313
+111      115     122
+101      96      110
+133      132     133
+134      135     135
+61       61      61
+66       63      67
+>> dc_basic_test
+
+
+... Randomly select 10001:10000(P:N) positive/negative samples ...
+7        8       8
+74       72      85
+59       60      66
+215      222     276
+65       70      86
+57       61      76
+3        3       3
+3        3       3
+1349     1360    1416
+1363     1342    1419
+5227     5262    8776
+5562     5614    9234
+113      114     125
+105      97      117
+132      132     133
+135      135     135
+61       61      61
+65       63      65

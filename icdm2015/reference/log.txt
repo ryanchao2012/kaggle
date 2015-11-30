@@ -1,0 +1,53 @@
+here are very few devices which correspond to the same drawbridge handle
+Device means "mobile devices", i.e. smart phone and tablet.
+Cookie means cookies from desktop browser.
+The cookies are exclusively associated with desktop and laptop computers accessing the web through browsers, but NOT with mobile devices
+The problem, then,  is to look at a series of mobile devices and try to infer which cookies belong to the same user on non-mobile devices
+Anonymous attributes in devices table share the same meaning with which in cookies table 
+All device_ids in the test set have at least one cookie_id
+
+
+lines in files:
+
+cookie_all_basic.csv	2,175,521
+
+ipagg_all.csv          11,037,815
+
+id_all_ip.csv           2,390,247
+
+id_all_property.csv     2,199,445
+
+property_category.csv     368,567
+
+
+
+A. 利用交集的ip，篩出較可能的cookie candidates
+	(1)以 A. 的結果，加入 ipagg features and cookie-ip features，即可訓練出基本模型(F-score ~ 0.5)
+
+
+B. 基於 A. 的結果，可藉由 ip 的 df 值(doc-freq., ex: ip 出現在 10 個不同 cookies，df = 10)，
+   將 df 高的 ip 排除(df > 50)，進而減緩 skewness.
+	(1)在training 與 validation set 有效(F-score + ~0.1)，prediction set 不明顯
+
+
+C. 基於 A. or B. 的結果，加入 cookie 與 device 的 basic features (attr: c0 c1 c2 a5 a6 a7)
+	(1) 這些 features 實際意義不明，難以解釋，ML的成效也難以評估。
+	(2) positive samples 中，dev-c1 與 ck-c1 間的類別似乎有對應關係，
+		同樣的，dev-c2 與 ck-c2 亦有對應關係(比c1明顯)
+	(3) 雖然可以利用(2) 做 tf-idf，但是 -1 很多，雜訊不好處理
+	(4) 在training 與 validation set 有效(F-score + 0.05 ~ 0.1)，prediction set 不明顯
+
+
+D. dev 與 ck 有各自的 properties，property 實際意義為 domain name (or App name)，
+   這些 properties 又可進一步被category分類，categories 固定 443 種。
+	(1) 藉由 dev or ck 的 property 使用頻率，應該可以得到使用者傾向的 categories 種類，
+	    可由一組 443 維的向量描述。
+	(2) 將 dev-category 與 ck-category 做 cosine similarity。
+	(3) 成效不明顯，雜訊似乎太多，但貌似可改善 recall。
+
+
+以上流程 A. B. C. D. 由於不同的資料處理方式，或是 normalization 方式之差異等等，即使沒有bug，
+結果也有可能大相徑庭(崩潰QAQ;)
+
+
+
