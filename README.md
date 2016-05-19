@@ -1,5 +1,5 @@
 # Kaggle Notes
 
-### Primary Tool: GNU Octave
+#### Primary Tool: Python
 
-### Interested Model: Neural Network
+#### Models: Neural Network, XGBoost, Random Forest
